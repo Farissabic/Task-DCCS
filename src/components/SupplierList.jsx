@@ -5,13 +5,7 @@ import { useState } from 'react';
 
 function SupplierList({suppliers,handelEdit,handelDelete}) {
 
-  const data = suppliers;
-  console.log(data);
-
- 
-  
-  
-
+  const [name, setName] = useState('');
   const [actionMenu, setActionMenu] = useState(false);
   const showActionMenu = ()=> {setActionMenu(!actionMenu)};
 
@@ -19,6 +13,18 @@ function SupplierList({suppliers,handelEdit,handelDelete}) {
 
   return (
     <List>
+       <h2>Supplier List :</h2>
+      <form>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          value={name}
+          placeholder='Search Supplier by name'
+          onChange={e => setName(e.target.value)}        
+          />
+          <BsIcons.BsSearch className='Licon'></BsIcons.BsSearch>
+      </form>
       <table>
         <thead>
            <tr>
@@ -30,25 +36,34 @@ function SupplierList({suppliers,handelEdit,handelDelete}) {
            </tr>
         </thead>
         <tbody>
-      {suppliers.length > 0  ?( suppliers.map((supplier)=>(
+        {(name !== '') ?( suppliers.filter((val)=>{
+            if(name == val.name){
+                return val;
+            }
+            }).map((val)=>(
 
-        <tr key={supplier.id}>
-            <td>{supplier.name}</td>
-            <td>{supplier.certificate}</td>
-            <td>{supplier.Dfrom}</td>
-            <td>{supplier.Dto}</td>
-            <td>
-                <button onClick={()=> handelEdit(supplier.id)}>Edit</button>
-                <button onClick={()=> handelDelete(supplier.id)} className='delete'>Delete</button>
-            </td>
-        </tr>
-      
-        ))): (
-          <tr>
-              <td colSpan={5}>No Suppliers</td>
-          </tr>
-      )}
-        </tbody>
+              <tr key={val.id}>
+                <td>{val.name}</td>
+                <td>{val.certificate}</td>
+                <td>{val.city}</td>
+                <td>{val.Dfrom}</td>
+                <td>{val.Dto}</td>
+              </tr>
+              ))): (
+                (suppliers.map((supplier)=>(
+                  <tr key={supplier.id}>
+                      <td>{supplier.name}</td>
+                      <td>{supplier.certificate}</td>
+                      <td>{supplier.Dfrom}</td>
+                      <td>{supplier.Dto}</td>
+                      <td>
+                          <button onClick={()=> handelEdit(supplier.id)}>Edit</button>
+                          <button onClick={()=> handelDelete(supplier.id)} className='delete'>Delete</button>
+                      </td>
+                  </tr>
+                )))
+            )}       
+          </tbody>
       </table>
     </List>
   )
@@ -57,7 +72,8 @@ function SupplierList({suppliers,handelEdit,handelDelete}) {
 export default SupplierList
 
 const List = styled.div`
-  margin-top : 5rem;
+  margin-top : 1rem;
+  text-align:center;
 
   table{
     border-collapse: collapse;
@@ -65,8 +81,8 @@ const List = styled.div`
   }
 
   table th{
-    background:#2B4865;
-    color:white;
+    background:#0F0E0E;
+    color:#FFCB42;
   }
 
   table, th, td {
@@ -77,11 +93,9 @@ const List = styled.div`
 
   button{
     padding: 1rem;
-    background : #002B5B;
+    background : #395B64;
     color : white;
     min-width:20%;
-    
-    border-radius: 20px;
     border:none;
     font-family: 'Roboto', sans-serif;
     margin-right:1rem;
@@ -89,9 +103,41 @@ const List = styled.div`
     transition : 300ms;
   }
 
-  button.delete{
-    background : red;
+  button:hover{
+    background:black;
+    color:#FFCB42;
+  }
 
+  button.delete{
+    background : #395B64;
+
+  }
+
+  button.delete:hover{
+    background : red;
+    color:white;
+
+  }
+
+  form{
+    width:100%;
+    margin:2rem 0 2rem 0;
+    display:flex;
+    align-items:center;
+    position:relative;
+  }
+
+  form input{
+    width:100%;
+    padding:1rem;
+    border: 4px solid #FFCB42;
+    border-radius : 50px;
+    background:#F0F0F0;
+  }
+
+  form .Licon{
+    position:absolute;
+    right:2rem;
   }
 
   

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components';
+import Add from '../data/Add.jpg';
 
 function SupplierMenu({setIsAdding,childToParent}) {
 
@@ -11,7 +12,7 @@ function SupplierMenu({setIsAdding,childToParent}) {
     <Menu>
       <h1>Supplier Menagement Sistem</h1>
       <button onClick={()=> setIsAdding(true)}>Add Certificate</button>
-      <button onClick={()=> childToParent(!openSearch)}>Search for supplier</button>
+      <button onClick={()=> childToParent(!openSearch)}>Advance Search</button>
     </Menu>
 
   )
@@ -21,18 +22,26 @@ export default SupplierMenu;
 
 
 const Menu = styled.div`
-  margin-top: 2rem;
-  position:relative;
+  background-image:url(${Add});
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow:inset 0 0 0 2000px rgba(255, 203, 66, 0.4);
+  width:100%;
+  height:23rem;
+  padding:4rem;
+
+  h1{
+    font-size:3rem;
+  }
 
   button{
     margin-top: 2rem;
     padding: 1rem;
-    background : #002B5B;
+    background #0F0E0E;
     color : white;
-    border-radius: 20px;
     font-family: 'Roboto', sans-serif;
     cursor:pointer;
-    transition : 300ms;
+    transition : 400ms;
     font-size:1rem;
     margin-right:1rem;
     border:none;
@@ -41,6 +50,9 @@ const Menu = styled.div`
 
   button:hover{
     
-    background : #8FE3CF;
+    border-left:5px solid #FFCB42;
+    background:#F0F0F0;
+    color:black;
+    letter-spacing:0.5px;
   }  
 `;

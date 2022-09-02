@@ -37,13 +37,18 @@ function Sidebar() {
 export default Sidebar
 
 const Nav = styled.div `
-    background : #002B5B;
+    background : #0F0E0E;
     height : 6rem;
     display : flex;
     justify-content : flex-start;
     align-items: center;
     text-decoration:none;
     gap:1rem;
+    position:sticky;
+    top:0;
+    width:100%;
+    z-index:2;
+   
 
     .title{
         color:white;
@@ -56,14 +61,14 @@ const Nav = styled.div `
 const Icon = styled(Link)`
     margin-left: 2rem;
     font-size: 2rem;
-    color : white;
+    color :#FFCB42;
     display : flex;
     justify-content : flex-start;
     align-items: center;
 `;
 
 const SidebarNav = styled.nav`
-    background : #002B5B;
+    background : #0F0E0E;
     width : 15rem;
     height : 100vh;
     dispaly :flex;

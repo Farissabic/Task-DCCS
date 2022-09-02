@@ -47,13 +47,13 @@ const SidebarTitle = styled.span`
     padding : 1rem;
     transition : 200ms ;
     &:hover{
-        background:#2B4865;
-        border-left : 5px solid #8FE3CF;
+        background:#395B64;
+        border-left : 5px solid #FFCB42;
     }
 `;
 
 const Dropdown = styled(Link)`
-    background:#2B4865;
+    background:#395B64;
     text-decoration:none;
 `;
 
@@ -62,13 +62,13 @@ const DropdownTitle = styled(Link)`
     align-items: center;
     justify-content:center;
     padding : 1rem;
-    background:#2B4865;
+    background:#395B64;
     text-decoration:none;
     color : white;
     transition : 200ms ;
 
     &:hover{
-        border-left : 5px solid #8FE3CF;
+        border-left : 5px solid #FFCB42;
     }
 `;
 

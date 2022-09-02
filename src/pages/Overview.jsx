@@ -80,5 +80,5 @@ export default Overview
 
 const Container = styled.div`
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 4rem auto;
 `;

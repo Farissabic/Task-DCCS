@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useState,useRef,useEffect } from 'react';
+import * as CgIcons from 'react-icons/cg';
+import Add from '../data/Add.jpg';
+
 
 function AddSupplier({suppliers, setSuppliers, setIsAdding}){
 
@@ -39,8 +42,12 @@ function AddSupplier({suppliers, setSuppliers, setIsAdding}){
 
   return (
     <Container>
+      <Left>
+        <img src={Add} alt="" />
+      </Left>
+      
       <form onSubmit={handleAdd}>
-                <h1>Add Supplier</h1>
+                <h1><CgIcons.CgProfile/>Add Supplier</h1>
                 <label htmlFor="name">Name</label>
                 <input
                     id="name"
@@ -79,8 +86,9 @@ function AddSupplier({suppliers, setSuppliers, setIsAdding}){
                     onChange={e => setDateTo(e.target.value)}
                 />
                 <div>
-                    <input type="submit" value="Add" />
+                    <input className='inputB' type="submit" value="Add" />
                     <input
+                        className='inputB'
                         type="button"
                         value="Cancel"
                         onClick={() => setIsAdding(false)}
@@ -94,20 +102,60 @@ function AddSupplier({suppliers, setSuppliers, setIsAdding}){
 export default AddSupplier
 
 const Container = styled.div`
-   margin-top:5rem;
-   display:flex;
-   align-items: center;
-   justify-content:center;
-   width:100%;
+
+  margin:5rem 0 5rem 0;
+  display:flex;
+  width:100%;
+  align-items: center;
+  gap:5%;
+
 
    form{
     display:flex;
     flex-direction: column;
-    width:80%;
+    
+    width:60%;
     gap:1rem;
+
+    
+
+    h1{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+    }
    }
 
    form input,select{
     padding:1rem;
+    border:none;
+    border-bottom:2px solid #FFB200;
    }
+
+
+   .inputB{
+    margin-right:1rem;
+    font-family: 'Montserrat', sans-serif;
+    border:none;
+    background:#F0F0F0;
+    transition:400ms;
+    cursor:pointer;
+   }
+
+   .inputB:hover{
+    border-left:5px solid #FFCB42;
+    background:#0F0E0E;
+    color:#F0F0F0;
+   }
+`;
+
+const Left = styled.div`
+  width:35%;
+  height:35rem;
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;

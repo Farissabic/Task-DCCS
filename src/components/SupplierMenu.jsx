@@ -2,18 +2,30 @@ import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components';
 import Add from '../data/Add.jpg';
+import { useSpring, animated } from 'react-spring'
 
 function SupplierMenu({setIsAdding,childToParent}) {
 
   const [openSearch,setOpenSearch]= useState(false);
+  const props = useSpring({ 
+    to: { opacity: 1 }, 
+    from: { opacity: 0 },
+    delay: 200
+  })
 
 
   return (
-    <Menu>
+
+    
+
+    <Menu style={props}>
       <h1>Supplier Menagement Sistem</h1>
       <button onClick={()=> setIsAdding(true)}>Add Certificate</button>
       <button onClick={()=> childToParent(!openSearch)}>Advance Search</button>
     </Menu>
+
+    
+   
 
   )
 }
@@ -21,7 +33,7 @@ function SupplierMenu({setIsAdding,childToParent}) {
 export default SupplierMenu;
 
 
-const Menu = styled.div`
+const Menu = styled(animated.div)`
   background-image:url(${Add});
   background-repeat: no-repeat;
   background-position: center;

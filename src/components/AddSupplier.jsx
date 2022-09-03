@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useState,useRef,useEffect } from 'react';
 import * as CgIcons from 'react-icons/cg';
 import Add from '../data/Add.jpg';
-
+import { useSpring, animated } from 'react-spring';
 
 function AddSupplier({suppliers, setSuppliers, setIsAdding}){
 
@@ -40,12 +40,24 @@ function AddSupplier({suppliers, setSuppliers, setIsAdding}){
 
   }
 
+
+  const props = useSpring({ 
+    to: { opacity: 1 }, 
+    from: { opacity: 0 },
+    reset: true,
+    delay: 300,
+  })
+
   return (
-    <Container>
+
+    
+      
+
+    <Container style={props}>
       <Left>
         <img src={Add} alt="" />
       </Left>
-      
+        
       <form onSubmit={handleAdd}>
                 <h1><CgIcons.CgProfile/>Add Supplier</h1>
                 <label htmlFor="name">Name</label>
@@ -94,14 +106,15 @@ function AddSupplier({suppliers, setSuppliers, setIsAdding}){
                         onClick={() => setIsAdding(false)}
                     />
                 </div>
-            </form>
+      </form>
     </Container>
+     
   )
 }
 
 export default AddSupplier
 
-const Container = styled.div`
+const Container = styled(animated.div)`
 
   margin:5rem 0 5rem 0;
   display:flex;
@@ -130,6 +143,14 @@ const Container = styled.div`
     padding:1rem;
     border:none;
     border-bottom:2px solid #FFB200;
+    transition:300ms;
+   }
+
+   form input:focus,select:focus{
+    outline: none;
+    border:2px solid #FFB200;
+    background:#F0F0F0;
+    padding:1.3rem;
    }
 
 

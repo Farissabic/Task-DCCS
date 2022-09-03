@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import * as BsIcons from 'react-icons/bs';
 import { useState } from 'react';
+import { useSpring, animated } from 'react-spring';
 
 function SupplierList({suppliers,handelEdit,handelDelete}) {
 
@@ -9,10 +10,16 @@ function SupplierList({suppliers,handelEdit,handelDelete}) {
   const [actionMenu, setActionMenu] = useState(false);
   const showActionMenu = ()=> {setActionMenu(!actionMenu)};
 
+  const props = useSpring({ 
+    to: { opacity: 1 }, 
+    from: { opacity: 0 },
+    delay: 400,
+  })
+
   
 
   return (
-    <List>
+    <List style={props}>
        <h2>Supplier List :</h2>
       <form>
         <input
@@ -71,7 +78,7 @@ function SupplierList({suppliers,handelEdit,handelDelete}) {
 
 export default SupplierList
 
-const List = styled.div`
+const List = styled(animated.div)`
   margin-top : 1rem;
   text-align:center;
 
@@ -129,10 +136,16 @@ const List = styled.div`
 
   form input{
     width:100%;
-    padding:1rem;
+    padding:0.8rem;
     border: 4px solid #FFCB42;
     border-radius : 50px;
     background:#F0F0F0;
+    transition:400ms;
+  }
+
+  form input:focus{
+    padding:1.5rem;
+    outline: none;
   }
 
   form .Licon{

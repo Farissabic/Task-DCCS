@@ -29,7 +29,10 @@ function Search({open,setPopup,suppliers}) {
         setId('');
     }
 
+    
+
   return (
+    
   (open? (
     <Cover>
         <Container>
@@ -110,6 +113,8 @@ function Search({open,setPopup,suppliers}) {
         </Container>
     </Cover>
   ):null)
+
+  
    
     
   )
@@ -159,7 +164,16 @@ const Container = styled.div`
     }
 
     form input{
-        padding:1rem;
+        padding:0.9rem;
+        border:none;
+        border:3px solid #FFB200;
+        transition:400ms;
+    }
+
+    form input:focus{
+        outline: none;
+        background:#F0F0F0;
+        padding:1.2rem;
     }
 
     form input.bot{

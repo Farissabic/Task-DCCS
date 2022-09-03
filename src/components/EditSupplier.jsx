@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import * as CgIcons from 'react-icons/cg';
 import Add from '../data/Add.jpg';
+import { useSpring, animated } from 'react-spring';
 
 function EditSupplier({suppliers,selectSupplier,setSuppliers,setIsEditing}) {
 
@@ -47,9 +48,16 @@ function EditSupplier({suppliers,selectSupplier,setSuppliers,setIsEditing}) {
 
   }
 
+  const props = useSpring({ 
+    to: { opacity: 1 }, 
+    from: { opacity: 0 },
+    reset: true,
+    delay: 300,
+  })
+
 
   return (
-    <Container>
+    <Container style={props}>
       <Left>
         <img src={Add} alt="" />
       </Left>
@@ -120,7 +128,7 @@ function EditSupplier({suppliers,selectSupplier,setSuppliers,setIsEditing}) {
 
 export default EditSupplier
 
-const Container = styled.div`
+const Container = styled(animated.div)`
 
   margin:5rem 0 5rem 0;
   display:flex;
@@ -149,6 +157,14 @@ const Container = styled.div`
     padding:1rem;
     border:none;
     border-bottom:2px solid #FFB200;
+    transition:300ms;
+   }
+
+   form input:focus,select:focus{
+    outline: none;
+    border:2px solid #FFB200;
+    background:#F0F0F0;
+    padding:1.3rem;
    }
 
 

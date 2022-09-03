@@ -44,7 +44,6 @@ function AddSupplier({suppliers, setSuppliers, setIsAdding}){
   const props = useSpring({ 
     to: { opacity: 1 }, 
     from: { opacity: 0 },
-    reset: true,
     delay: 300,
   })
 
